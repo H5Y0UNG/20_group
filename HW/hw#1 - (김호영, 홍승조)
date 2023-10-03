@@ -33,3 +33,7 @@
   우유의 거래 의도 예측 정확도는 90.2%
   냉동식품의 정확도는 78.3%
   두 시도 모두 SVM을 포함한 7가지 기법중 가장 높은 정확도를 보임
+
+출처
+  사례 1 : Machine learning-based classification using electroencephalographic multi-paradigms between drug-naïve patients with depression and healthy controls(2023)
+  사례 2 : Support Vector Machine 기법을 이용한 고객의 구매의도 예측(2008)
