@@ -1,0 +1,17 @@
+직접 투표보다 간접투표의 정확도가 약간 올라간다.
+어떤 데이터는 가장 많이 분류된 부류로 결정되는 것보다 예측 확률의 평균이 더 높은 부류로 결정되는게 더 좋을 수 있다.
+
+간접투표의 SVC에는 probability가 True로 설정되어 따로 설정하지 않으면
+분류했을때 예측 확률을 제공하지 않는다는 것을 알 수 있고 LogisticRegression
+이나 RandomForestClassifier는 별도의 파라미터없이도 분류했을 때 예측 확률을 제공한다는 것을 알 수 있다.
+
+BaggingClassifier의 n_estimators를 500개에서 1000개로 바꿨는데 정확도는 아무 변화가 없고 max_samples는 100에서 50개로 줄였는데 정확도가 2퍼센트가 올랐다.
+bootstrap을 True에서 False로 바꾸면 정확도가 2퍼센트가 올랐다.
+
+oob는 학습되지 않은 데이터를 가지고 성능 평가를 하는데 파라미터 중 bootstrap을 False로 하고 모든 훈련 데이터를 학습시키면 어떻게 나올까?
+
+결과 : bootstrap을 False로 하게 되면 oob 계산을 할때 bootstrap=True가 되어야 한다고 에레메시지가 뜬다.
+
+또한 파라미터 중 oob_score=True을 False로 한 후 oob_score_을 호출하게 되면 oob_score_ 속성이 없다고 나온다.
+
+oob_score_의 값은 0.898이고 테스트 데이터 정확도는 0.912이다.
