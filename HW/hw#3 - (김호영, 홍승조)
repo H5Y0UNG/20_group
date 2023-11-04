@@ -1,0 +1,40 @@
+1) 기계학습에서 학습이란
+
+가중치 :  각 입력 신호가 결과 출력에 미치는 중요도를 조절하는 매개변수
+손실함수 : 모델의 예측값과 실제값의 오차를 측정하는 함수
+
+훈련 데이터로부터 가중치 매개변수의 최적값을 자동으로 획득 함으로서 손실함수의 결과값을 최소화 시키는 것
+
+
+2) 확률적 경사 하강법
+
+n_epochs = 50
+t0, t1 = 5, 50
+
+def learning_schedule(t):
+    return t0 / (t + t1)
+
+theta = np.random.randn(2, 1)
+
+for epoch in range(n_epochs):
+    for i in range(m):
+        random_index = np.random.randint(m)
+        xi = X_b[random_index:random_index + 1]
+        yi = y[random_index:random_index + 1]
+        gradients = 2 * xi.T.dot(xi.dot(theta) - yi)
+        eta = learning_schedule(epoch * m + i)
+        theta = theta - eta * gradients
+
+에폭 수는 50
+학습률 스케줄링에 사용되는 t0와 t1
+
+세타는 2, 1사이즈의 난수배열
+
+에폭 수 만큼 반복
+샘플 수 만큼 반복
+샘플을 랜덤하게 선택하기 위한 난수 저장
+난수를 이용해 특성 하나 xi에 저장
+마찬가지로 목표값 하나 yi에 저장
+손실함수 그래디언트 계산
+학습률 계산
+그래디언트와 학습률을 바탕으로 세타 업데이트
